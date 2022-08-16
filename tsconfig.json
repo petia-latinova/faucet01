@@ -14,4 +14,7 @@
     "strictPropertyInitialization": false
   },
   "types": ["eliptic"],
+  "include": [
+    "./src/**/*"
+  ],
 }

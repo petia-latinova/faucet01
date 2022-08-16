@@ -7,23 +7,20 @@ import dotenv from 'dotenv';
 // import mongoose from 'mongoose';
 // import { Address } from './models/address-schema';
 import cors from 'cors';
-import { Account, Node, Wallet } from hackchain-wallet-core;
+import Wallet from 'hackchain-wallet-core/dist/wallet';
+import Account from 'hackchain-wallet-core/dist/account';
+import Node from "hackchain-wallet-core/dist/node";
+import * as path from 'path';
 
 dotenv.config();
-
-if (typeof btoa === 'undefined') {
-  global.btoa = function (str) {
-    return Buffer.from(str, 'binary').toString('base64');
-  };
-}
 
 const app: Express = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '../../frontend/build')));
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3008;
 const privateKey = process.env.PRIVATEKEY || '74186b712dea603adfb68166b18289f81566c9022ea1127b92fcb67b56193f9f';
 const chainUrl = process.env.CHAIN_URL || 'http://hackchain.pirin.pro';
 const chainId = process.env.CHAIN_ID || 'mainnet';
@@ -56,6 +53,10 @@ wallet.addAccount(account, { selected: true });
 // db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use(cors({ origin: true }));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'../frontend/build/index.html'));
+});
 
 app.post('/send', async (req: Request, res: Response, next: NextFunction) => {
   /* For demo purposes the following function is in a comment.

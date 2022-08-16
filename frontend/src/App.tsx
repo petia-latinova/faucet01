@@ -54,7 +54,7 @@ function App() {
       <br/>
       {hash && <div>
         <span>Transaction URL: </span>
-        <a href={`http://hackchain.pirin.pro/api/transactions/${hash}`}>http://hackchain.pirin.pro/api/transactions/{hash}</a>
+        <a href={`http://hackchain.pirin.pro/api/transactions/${hash}`} target="_blank" rel="noreferrer">http://hackchain.pirin.pro/api/transactions/{hash}</a>
       </div>}
       <br/>
       {hasError && <p>{hasError}</p>}

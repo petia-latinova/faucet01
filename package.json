@@ -1,21 +1,41 @@
 {
-  "name": "faucet01",
+  "name": "backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node source/faucet/backend/dist/faucet/backend/src/index.js",
-    "heroku-postbuild": "cd source/faucet/frontend && yarn && yarn run build"
-
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "heroku-postbuild": "npm install && npx tsc && cd frontend && npm install && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/petia-latinova/faucet01.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/petia-latinova/faucet01/issues"
+  "dependencies": {
+    "@types/elliptic": "^6.4.14",
+    "@types/node-fetch": "^2.6.2",
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "elliptic": "^6.5.4",
+    "express": "^4.18.1",
+    "hackchain-wallet-core": "^0.1.7",
+    "js-sha256": "^0.9.0",
+    "mongoose": "^6.4.7",
+    "node-fetch": "2"
   },
-  "homepage": "https://github.com/petia-latinova/faucet01#readme"
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^28.1.6",
+    "@types/node": "^18.0.6",
+    "@types/supertest": "^2.0.12",
+    "concurrently": "^7.3.0",
+    "jest": "^28.1.3",
+    "nodemon": "^2.0.19",
+    "supertest": "^6.2.4",
+    "ts-jest": "^28.0.7",
+    "typescript": "^4.7.4"
+  }
 }
