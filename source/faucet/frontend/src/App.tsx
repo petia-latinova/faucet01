@@ -10,6 +10,8 @@ function App() {
   const [addressEntered, setAddressEntered] = useState(false);
 
   const send = () => {
+    setHash('');
+    setHasError('');
     if (!isAddress) {
       return;
     }
@@ -54,6 +56,7 @@ function App() {
         <span>Transaction URL: </span>
         <a href={`http://hackchain.pirin.pro/api/transactions/${hash}`}>http://hackchain.pirin.pro/api/transactions/{hash}</a>
       </div>}
+      <br/>
       {hasError && <p>{hasError}</p>}
     </div>
   );
