@@ -1,0 +1,21 @@
+{
+  "name": "faucet01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node source/faucet/backend/dist/faucet/backend/src/index.js",
+    "heroku-postbuild": "cd source/faucet/frontend && yarn && yarn run build"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petia-latinova/faucet01.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/petia-latinova/faucet01/issues"
+  },
+  "homepage": "https://github.com/petia-latinova/faucet01#readme"
+}

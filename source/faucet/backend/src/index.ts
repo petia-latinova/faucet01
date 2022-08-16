@@ -21,6 +21,8 @@ const app: Express = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, '../../frontend/build')));
+
 const port = process.env.PORT;
 const privateKey = process.env.PRIVATEKEY || '74186b712dea603adfb68166b18289f81566c9022ea1127b92fcb67b56193f9f';
 const chainUrl = process.env.CHAIN_URL || 'http://hackchain.pirin.pro';
